@@ -1,0 +1,11 @@
+{
+    "vetur.experimental.templateInterpolationService": false,
+    "workbench.colorCustomizations": {
+      "editorIndentGuide.activeBackground1": "#80ff00"
+    },
+    "prettier.printWidth": 500,
+    "editor.tabSize": 2,
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 500
+}
+
