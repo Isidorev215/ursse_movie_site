@@ -8,7 +8,10 @@
       if(isset($_SESSION['auth']) && isset($_SESSION['loggedInUserId'])){
         include "./includes/authentication.php";
       }
-      // for finding content
+      // runs immediateky after auth so that the status of subbed movies and tv is known
+      include "./includes/getSubscribedContent.php";
+
+      // for finding media content
       include "./includes/discover_movies.php";
       include "./includes/discover_tv.php";
 
@@ -33,12 +36,13 @@
 
         <main class="pt-20 -mt-2">
           <div class="mx-auto py-2 sm:px-2">
-            <!-- Header row -->
-            <!-- <div class="flex flex-row flex-wrap">
-              <div class="shrink max-w-full px-4 w-full">
-                <p class="text-xl font-bold mt-3 mb-5">Discovery</p>
-              </div>
+
+            <!-- <div class="w-full bg-gray-300 border text-sm text-gray-800 p-3">
+              <?php
+                // echo $subed_movies_ids;
+              ?>
             </div> -->
+
             <!-- one content row -->
             <div class="content-row flex flex-row flex-wrap">
               <div class="shrink max-w-full w-full px-4">
@@ -58,7 +62,7 @@
                             if($discovery_err){
                               echo "<p>Something went wrong</p>";
                             } else {
-                              renderMovieCards($discovered_movies);
+                              renderMovieCards($discovered_movies, $subed_movies_ids);
                             }
                           ?>
                         </div>
@@ -83,7 +87,7 @@
                             if($tv_err){
                               echo "<p>Something went wrong</p>";
                             } else {
-                              renderTVCards($discovered_tv);
+                              renderTVCards($discovered_tv, $subed_tv_ids);
                             }
                           ?>
                         </div>

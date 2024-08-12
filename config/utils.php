@@ -46,14 +46,21 @@ function generateNewPassword($length = 6) {
     return $randomString;
 }
 
-function renderMovieCards($movies){
+function renderMovieCards($movies, $subed=""){
 	if(!empty($movies['results'])){
+		$subed_array = explode(',', $subed);
 
 		foreach($movies['results'] as $movie){
 			echo '<div class="movie relative space-y-3 w-[250px]">';
-			echo '<button id="'.$movie['id'].'" type="button" title="subscribe" class="movie_sub absolute top-6 right-4 z-10">';
-			echo '<img src="/img/svg/heart.svg" alt="">';
-			echo '</button>';
+			if(count($subed_array) > 0 && in_array($movie['id'], $subed_array)){
+				echo '<button id="'.$movie['id'].'" type="button" disabled title="Already Subscribed" class="movie_sub absolute top-6 right-4 z-10">';
+				echo '<img src="/img/svg/heart_fill.svg" alt="">';
+				echo '</button>';
+			} else {
+				echo '<button id="'.$movie['id'].'" type="button" title="Add movie" class="movie_sub absolute top-6 right-4 z-10">';
+				echo '<img src="/img/svg/heart.svg" alt="">';
+				echo '</button>';
+			}
 			echo '<div>';
 			echo '<div class="overflow-hidden rounded-md">';
 			echo '<img src="https://image.tmdb.org/t/p/w500'.htmlspecialchars($movie['poster_path']).'" alt="" class="h-auto w-auto object-cover transition-all hover:scale-105 aspect-[3/4]">';
@@ -71,14 +78,21 @@ function renderMovieCards($movies){
 	}
 }
 
-function renderTVCards($series){
+function renderTVCards($series, $subed=""){
 	if(!empty($series['results'])){
+		$subed_array = explode(',', $subed);
 
 		foreach($series['results'] as $show){
 			echo '<div class="tvshow relative space-y-3 w-[150px]">';
-			echo '<button id="'.$show['id'].'" type="button" title="subscribe" class="tv_sub absolute top-6 right-4 z-10">';
-			echo '<img src="/img/svg/heart.svg" alt="">';
-			echo '</button>';
+			if(count($subed_array) > 0 && in_array($show['id'], $subed_array)){
+				echo '<button id="'.$show['id'].'" type="button" disabled title="Already Subscribed" class="tv_sub absolute top-6 right-4 z-10">';
+				echo '<img src="/img/svg/heart_fill.svg" alt="">';
+				echo '</button>';
+			} else {
+				echo '<button id="'.$show['id'].'" type="button" title="Add movie" class="tv_sub absolute top-6 right-4 z-10">';
+				echo '<img src="/img/svg/heart.svg" alt="">';
+				echo '</button>';
+			}
 			echo '<div>';
 			echo '<div class="overflow-hidden rounded-md">';
 			echo '<img src="https://image.tmdb.org/t/p/w500'.htmlspecialchars($show['poster_path']).'" alt="" class="h-auto w-auto object-cover transition-all hover:scale-105 aspect-[3/4]">';
