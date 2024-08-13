@@ -3,7 +3,7 @@
 
   <head>
     <?php
-      $title = "Users";
+      $title = "Subscriptions";
       include "./partials/head.php";
       include "./includes/authentication.php";
       

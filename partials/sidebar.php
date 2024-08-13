@@ -67,7 +67,7 @@
             <li>
               <a class="block py-2.5 px-6 hover:text-indigo-500 dark:hover:text-indigo-400" href="/mysubscriptions.php">
                 <img src="./img/svg/subscribe.svg" class="inline-block size-4 me-2" />
-                <span>My Subscriptions</span>
+                <span>Subscriptions</span>
               </a>
             </li>
           ';

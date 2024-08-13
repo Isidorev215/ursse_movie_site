@@ -6,7 +6,7 @@
     $title = "Dashboard";
     include "./partials/head.php";
     include "./includes/authentication.php";
-    include "./includes/getSubscribedContent.php";
+    include "./includes/getSubscribedIds.php";
   ?>
 </head>
 
@@ -76,7 +76,7 @@
                         <h2 class="self-center mb-1">Movies</h2>
                         <p class="text-xl font-semibold">
                           <?php
-                            echo ''.count(explode(',', $subed_movies_ids)).'';
+                            echo ''.$subed_movies_ids === "" ? 0 : count(explode(',', $subed_movies_ids)).'';
                           ?>
                         </p>
                       </div>
@@ -94,7 +94,7 @@
                         <h2 class="self-center mb-1">Series</h2>
                         <p class="text-xl font-semibold">
                           <?php
-                            echo ''.count(explode(',', $subed_tv_ids)).'';
+                            echo ''.$subed_tv_ids === "" ? 0 : count(explode(',', $subed_tv_ids)).'';
                           ?>
                         </p>
                       </div>
