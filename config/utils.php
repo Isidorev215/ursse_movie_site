@@ -46,6 +46,16 @@ function generateNewPassword($length = 6) {
     return $randomString;
 }
 
+function add_detail_button($id, $type){
+	if(isset($_SESSION['auth']) && isset($_SESSION['loggedInUserId'])){
+		echo '<a href="/mediadetails.php?id='.$id.'&type='.$type.'" class="absolute w-full flex justify-start items-center bottom-2 left-2 z-10">';
+		echo '<span class="px-4 py-2 text-gray-200 bg-gray-700 transparent rounded-md">';
+		echo 'Details';
+		echo '</span>';
+		echo '</a>';
+	}
+}
+
 function renderMovieCards($movies, $subed=""){
 	if(!empty($movies['results'])){
 		$subed_array = explode(',', $subed);
@@ -69,8 +79,8 @@ function renderMovieCards($movies, $subed=""){
 				echo '</div>';
 				
 			} else {
+				
 				echo '<div class="movie relative space-y-3 w-[250px]">';
-
 				if(count($subed_array) > 0 && in_array($movie['id'], $subed_array)){
 					echo '<button id="'.$movie['id'].'" type="button" disabled title="Already Subscribed" class="movie_sub absolute top-6 right-4 z-10">';
 					echo '<img src="/img/svg/heart_fill.svg" alt="">';
@@ -82,8 +92,11 @@ function renderMovieCards($movies, $subed=""){
 				}
 				
 				echo '<div>';
-				echo '<div class="overflow-hidden rounded-md">';
+				echo '<div class="relative overflow-hidden rounded-md">';
 				echo '<img src="https://image.tmdb.org/t/p/w500'.htmlspecialchars($movie['poster_path']).'" alt="" class="h-auto w-auto object-cover transition-all hover:scale-105 aspect-[3/4]">';
+
+				add_detail_button($movie['id'], 'movie');
+
 				echo '</div>';
 				echo '</div>';
 				echo '<div class="space-y-1 text-sm">';
@@ -132,8 +145,11 @@ function renderTVCards($series, $subed=""){
 					echo '</button>';
 				}
 				echo '<div>';
-				echo '<div class="overflow-hidden rounded-md">';
+				echo '<div class="relative overflow-hidden rounded-md">';
 				echo '<img src="https://image.tmdb.org/t/p/w500'.htmlspecialchars($show['poster_path']).'" alt="" class="h-auto w-auto object-cover transition-all hover:scale-105 aspect-[3/4]">';
+
+				add_detail_button($show['id'], 'tv');
+
 				echo '</div>';
 				echo '</div>';
 				echo '<div class="space-y-1 text-sm">';

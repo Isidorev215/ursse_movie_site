@@ -3,7 +3,7 @@
 
   <head>
     <?php
-      $title = "Users";
+      $title = "Media Details";
       include "./partials/head.php";
       include "./includes/authentication.php";
       

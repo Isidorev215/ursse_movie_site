@@ -34,6 +34,10 @@
         <main class="pt-20 -mt-2">
           <div class="mx-auto py-2 sm:px-2">
 
+          <?php
+            alertMessage();
+          ?>
+
             <!-- one content row -->
             <div class="content-row flex flex-row flex-wrap">
               <div class="shrink max-w-full w-full px-4">
