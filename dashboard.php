@@ -6,6 +6,7 @@
     $title = "Dashboard";
     include "./partials/head.php";
     include "./includes/authentication.php";
+    include "./includes/getSubscribedContent.php";
   ?>
 </head>
 
@@ -68,34 +69,34 @@
                 <div class="shrink max-w-full px-3 lg:px-4 w-1/2 mb-6">
                   <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
                     <div class="flex flex-row">
-                      <div class="self-center w-16 h-16 rounded-full bg-gray-300 text-center flex justify-center items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="text-white" viewBox="0 0 16 16">
-                          <path d="M14 10a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1h12zM2 9a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1a2 2 0 0 0-2-2H2z"></path>
-                          <path d="M5 11.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm-2 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM14 3a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12zM2 2a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2z"></path>
-                          <path d="M5 4.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm-2 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"></path>
-                        </svg>
+                      <div class="self-center w-16 h-16 rounded-full bg-gray-100 text-center flex justify-center items-center">
+                        <img src="/img/svg/movie.svg" alt="" srcset="">
                       </div>
                       <div class="ms-3">
                         <h2 class="self-center mb-1">Movies</h2>
-                        <p class="text-xl font-semibold">0</p>
+                        <p class="text-xl font-semibold">
+                          <?php
+                            echo ''.count(explode(',', $subed_movies_ids)).'';
+                          ?>
+                        </p>
                       </div>
                     </div>
                   </div>
                 </div>
-
+                
                 <div class="shrink max-w-full px-3 lg:px-4 w-1/2 mb-6">
                   <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
                     <div class="flex flex-row">
-                      <div class="self-center w-16 h-16 rounded-full bg-gray-300 text-center flex justify-center items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="text-white" viewBox="0 0 16 16">
-                          <path d="M14 10a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1h12zM2 9a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1a2 2 0 0 0-2-2H2z"></path>
-                          <path d="M5 11.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm-2 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM14 3a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12zM2 2a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2z"></path>
-                          <path d="M5 4.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm-2 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"></path>
-                        </svg>
+                      <div class="self-center w-16 h-16 rounded-full bg-gray-100 text-center flex justify-center items-center">
+                        <img src="/img/svg/netflix.svg" alt="" srcset="">
                       </div>
                       <div class="ms-3">
                         <h2 class="self-center mb-1">Series</h2>
-                        <p class="text-xl font-semibold">0</p>
+                        <p class="text-xl font-semibold">
+                          <?php
+                            echo ''.count(explode(',', $subed_tv_ids)).'';
+                          ?>
+                        </p>
                       </div>
                     </div>
                   </div>

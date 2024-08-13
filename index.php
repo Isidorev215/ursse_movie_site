@@ -9,7 +9,7 @@
         include "./includes/authentication.php";
       }
       // runs immediateky after auth so that the status of subbed movies and tv is known
-      include "./includes/getSubscribedContent.php";
+      include "./includes/getSubscribedIds.php";
 
       // for finding media content
       include "./includes/discover_movies.php";
@@ -36,12 +36,6 @@
 
         <main class="pt-20 -mt-2">
           <div class="mx-auto py-2 sm:px-2">
-
-            <!-- <div class="w-full bg-gray-300 border text-sm text-gray-800 p-3">
-              <?php
-                // echo $subed_movies_ids;
-              ?>
-            </div> -->
 
             <!-- one content row -->
             <div class="content-row flex flex-row flex-wrap">
