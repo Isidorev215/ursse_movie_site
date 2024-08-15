@@ -165,7 +165,27 @@ function renderTVCards($series, $subed=""){
 	}
 }
 
+function getVideoTypeFromTMDB($videos_array, $website, $type) {
+	$matching_videos = [];
 
+	if (count($videos_array) > 0) {
+			foreach ($videos_array as $video) {
+					if ($video['site'] == $website && $video['type'] == $type) {
+							$matching_videos[] = $video;
+					}
+			}
+
+			if (count($matching_videos) > 0) {
+					$random_video = $matching_videos[rand(0, count($matching_videos) - 1)];
+					return ['status' => true, 'key' => $random_video['key']];
+			} else {
+					$random_video = $videos_array[rand(0, count($videos_array) - 1)];
+					return ['status' => true, 'key' => $random_video['key']];
+			}
+	} else {
+			return ['status' => false, 'message' => 'No Trailer video found'];
+	}
+}
 
 
 
