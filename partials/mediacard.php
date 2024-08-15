@@ -46,21 +46,22 @@
         ?>
         <p class="mb-2 text-sm">
           <?php
-            echo 'Released: ';
-            echo $media_type === "movie" ? $media_details["release_date"] : $media_details["first_air_date"];
+            $media_date = new DateTimeImmutable($media_type === "movie" ? $media_details["release_date"] : $media_details["first_air_date"]);
+            echo $media_type === "movie" ? 'Released: ' : 'Pilot : ';
+            echo $media_date->format('jS\, F Y');
           ?>
         </p>
         <?php
           if($media_type === 'movie'){
-            $formatter = new NumberFormatter('en_GB',  NumberFormatter::CURRENCY);
+            $number_formatter = new NumberFormatter('en_GB',  NumberFormatter::CURRENCY);
 
             if($media_details['revenue'] >= $media_details['budget']){
-              echo '<h3 class="text-base mb-2 text-green-500" title="Budget: '.$formatter->formatCurrency($media_details['budget'], 'USD').'">Box office: ';
-              echo ''.$formatter->formatCurrency($media_details['revenue'], 'USD').'</h3>';
+              echo '<h3 class="text-base mb-2 text-green-500" title="Budget: '.$number_formatter->formatCurrency($media_details['budget'], 'USD').'">Box office: ';
+              echo ''.$number_formatter->formatCurrency($media_details['revenue'], 'USD').'</h3>';
               echo '</h3>';
             } else {
-              echo '<h3 class="text-base mb-2 text-red-500" title="Budget: '.$formatter->formatCurrency($media_details['budget'], 'USD').'">Box office: ';
-              echo ''.$formatter->formatCurrency($media_details['revenue'], 'USD').'</h3>';
+              echo '<h3 class="text-base mb-2 text-red-500" title="Budget: '.$number_formatter->formatCurrency($media_details['budget'], 'USD').'">Box office: ';
+              echo ''.$number_formatter->formatCurrency($media_details['revenue'], 'USD').'</h3>';
               echo '</h3>';
             }
           } else {

@@ -111,7 +111,7 @@ function renderMovieCards($movies, $page, $subed=""){
 		}
 
 	} else {
-		echo "<p>No movies found.</p>";
+		echo "<p class='w-full text-center rounded py-2 bg-gray-300'>No movies found.</p>";
 	}
 }
 
@@ -165,7 +165,7 @@ function renderTVCards($series, $page, $subed=""){
 		}
 
 	} else {
-		echo "<p>No shows found.</p>";
+		echo "<p class='w-full text-center rounded py-2 bg-gray-300'>No shows found.</p>";
 	}
 }
 
