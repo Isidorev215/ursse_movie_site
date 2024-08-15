@@ -54,7 +54,7 @@
                       <div style="min-width: 100%; display: table;">
                         <div id="movie_discovery" class="flex space-x-4 pb-4">
                           <?php
-                            renderMovieCards($subscribed_movies, $subed_movies_ids);
+                            renderMovieCards($subscribed_movies, 'Subscriptions', $subed_movies_ids);
                           ?>
                         </div>
                       </div>
@@ -75,7 +75,7 @@
                       <div style="min-width: 100%; display: table;">
                         <div id="tv_discovery" class="flex space-x-4 pb-4">
                           <?php
-                            renderTVCards($subscribed_tv, $subed_tv_ids);
+                            renderTVCards($subscribed_tv, 'Subscriptions', $subed_tv_ids);
                           ?>
                         </div>
                       </div>

@@ -56,7 +56,7 @@
                             if($discovery_err){
                               echo "<p>Something went wrong</p>";
                             } else {
-                              renderMovieCards($discovered_movies, $subed_movies_ids);
+                              renderMovieCards($discovered_movies, 'Home', $subed_movies_ids);
                             }
                           ?>
                         </div>
@@ -81,7 +81,7 @@
                             if($tv_err){
                               echo "<p>Something went wrong</p>";
                             } else {
-                              renderTVCards($discovered_tv, $subed_tv_ids);
+                              renderTVCards($discovered_tv, 'Home', $subed_tv_ids);
                             }
                           ?>
                         </div>

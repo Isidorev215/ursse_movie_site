@@ -68,10 +68,10 @@
           }
         ?>
         
-        <div class="text-sm w-full flex justify-start items-center space-x-2 flex-wrap flex-row mb-2">
+        <div class="text-sm w-full flex justify-start items-center flex-wrap flex-row mb-2">
           <?php
             foreach ($media_details['genres'] as $genre){
-              echo '<span class="p-2 bg-gray-300 text-gray-700 rounded-md border shadow-sm">';
+              echo '<span class="p-2 bg-gray-300 text-gray-700 rounded-md border shadow-sm mr-2 mb-2">';
               echo ''.$genre["name"].'';
               echo '</span>';
             }

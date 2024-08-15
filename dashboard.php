@@ -27,8 +27,13 @@
 
       <main class="pt-20 -mt-2">
         <div class="mx-auto py-2 sm:px-2">
+
+          <?php
+            alertMessage();
+          ?>
+
           <!-- A row . -->
-          <div class="flex flex-row flex-wrap">
+          <div class="content-row flex flex-row flex-wrap">
             <div class="shrink max-w-full px-4 w-full">
               <p class="text-xl font-bold mt-3 mb-5">Dashboard</p>
             </div>

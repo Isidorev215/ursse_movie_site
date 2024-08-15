@@ -56,7 +56,7 @@ function add_detail_button($id, $type){
 	}
 }
 
-function renderMovieCards($movies, $subed=""){
+function renderMovieCards($movies, $page, $subed=""){
 	if(!empty($movies['results'])){
 		$subed_array = explode(',', $subed);
 
@@ -94,8 +94,10 @@ function renderMovieCards($movies, $subed=""){
 				echo '<div>';
 				echo '<div class="relative overflow-hidden rounded-md">';
 				echo '<img src="https://image.tmdb.org/t/p/w500'.htmlspecialchars($movie['poster_path']).'" alt="" class="h-auto w-auto object-cover transition-all hover:scale-105 aspect-[3/4]">';
-
-				add_detail_button($movie['id'], 'movie');
+				
+				if($page === 'Subscriptions'){
+					add_detail_button($movie['id'], 'movie');
+				}
 
 				echo '</div>';
 				echo '</div>';
@@ -113,7 +115,7 @@ function renderMovieCards($movies, $subed=""){
 	}
 }
 
-function renderTVCards($series, $subed=""){
+function renderTVCards($series, $page, $subed=""){
 	if(!empty($series['results'])){
 		$subed_array = explode(',', $subed);
 
@@ -147,8 +149,10 @@ function renderTVCards($series, $subed=""){
 				echo '<div>';
 				echo '<div class="relative overflow-hidden rounded-md">';
 				echo '<img src="https://image.tmdb.org/t/p/w500'.htmlspecialchars($show['poster_path']).'" alt="" class="h-auto w-auto object-cover transition-all hover:scale-105 aspect-[3/4]">';
-
-				add_detail_button($show['id'], 'tv');
+				
+				if($page === 'Subscriptions'){
+					add_detail_button($show['id'], 'tv');
+				}
 
 				echo '</div>';
 				echo '</div>';
