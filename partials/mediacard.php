@@ -4,18 +4,26 @@
     <div class="flex-wrap flex flex-row -mx-4">
 
       <div class="flx-shrink max-w-full px-4 w-full text-center md:w-1/3">
-        <div class="p-4">
+        <div class="md:p-4">
           <div class="max-w-full w-full h-auto">
             <?php
               echo '<img src="https://image.tmdb.org/t/p/original' . htmlspecialchars($media_details['poster_path']) . '" alt="" class="h-auto w-auto object-cover transition-all hover:scale-105 aspect-[3/4]">';
             ?>
           </div>
           
-          <div class="my-4 w-full">
-            <button type="button" id="button-cart" class="w-full py-2 px-5 inline-block text-center rounded leading-5 text-gray-100 bg-red-500 border border-red-500 hover:text-white hover:bg-red-700 hover:ring-0 hover:border-red-600 focus:bg-indigo-600 focus:border-red-600 focus:outline-none focus:ring-0">
-              Unsubscribe
-            </button>
-          </div>
+          <?php
+            if((in_array($media_details['id'], explode(',', $subed_movies_ids))) || (in_array($media_details['id'], explode(',', $subed_tv_ids)))){
+              echo '<div class="my-4 w-full">';
+              echo '<form action="./handlers/unsubscribe.php" method="POST">';
+              echo '<input class="hidden" name="id" type="number" readonly value="'.$media_details['id'].'" />';
+              echo '<input class="hidden" name="type" type="text" readonly value="'.$media_type.'" />';
+              echo '<button name="unsubscribe" type="submit" id="button-cart" class="w-full py-2 px-5 inline-block text-center rounded leading-5 text-gray-100 bg-red-500 border border-red-500 hover:text-white hover:bg-red-700 hover:ring-0 hover:border-red-600 focus:bg-indigo-600 focus:border-red-600 focus:outline-none focus:ring-0">';
+              echo 'Unsubscribe';
+              echo '</button>';
+              echo '</form>';
+              echo '</div>';  
+            }
+          ?>
 
         </div>
       </div>
@@ -47,12 +55,12 @@
             $formatter = new NumberFormatter('en_GB',  NumberFormatter::CURRENCY);
 
             if($media_details['revenue'] >= $media_details['budget']){
-              echo '<h3 class="text-base mb-2 text-green-500">Box office: ';
-              echo ''.$formatter->formatCurrency($media_details['revenue'], 'USD').' ('.$formatter->formatCurrency($media_details['budget'], 'USD').')</h3>';
+              echo '<h3 class="text-base mb-2 text-green-500" title="Budget: '.$formatter->formatCurrency($media_details['budget'], 'USD').'">Box office: ';
+              echo ''.$formatter->formatCurrency($media_details['revenue'], 'USD').'</h3>';
               echo '</h3>';
             } else {
-              echo '<h3 class="text-base mb-2 text-red-500">Box office:';
-              echo ''.$formatter->formatCurrency($media_details['revenue'], 'USD').' ('.$formatter->formatCurrency($media_details['budget'], 'USD').')</h3>';
+              echo '<h3 class="text-base mb-2 text-red-500" title="Budget: '.$formatter->formatCurrency($media_details['budget'], 'USD').'">Box office: ';
+              echo ''.$formatter->formatCurrency($media_details['revenue'], 'USD').'</h3>';
               echo '</h3>';
             }
           } else {

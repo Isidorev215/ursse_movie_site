@@ -16,7 +16,7 @@
       $media_details = make_api_call($media_url);
       $media_videos =  make_api_call($media_videos_url);  
     } else {
-      redirect('/mysubscriptions.php', 'invalid type', 'red');
+      redirect('/mysubscriptions.php', 'Invalid type', 'red');
     }
 
   } else {
